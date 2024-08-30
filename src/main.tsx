@@ -1,9 +1,15 @@
 import { createRoot } from "react-dom/client";
 import Posts from "./pages/Posts.tsx";
 import Login from "./pages/Login.tsx";
+import UserPage from "./pages/UserPage.tsx";
 import Register from "./pages/Register.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {

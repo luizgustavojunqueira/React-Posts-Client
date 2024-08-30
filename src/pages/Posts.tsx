@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
-interface IPost {
-  post_id: number;
-  title: string;
-  content: string;
-  created_at: string;
-  updated_at: string;
-  user_id: number;
-  user_full_name: string;
-}
 import { useNavigate } from "react-router-dom";
+import CreatePostModal from "../components/CreatePostModal";
+import PostItem from "../components/PostItem";
+import { Post } from "../shared/types";
 
 function Posts() {
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
 
   const getPosts = async () => {
@@ -36,6 +32,11 @@ function Posts() {
     Cookie.remove("token");
     navigate("/", { replace: true });
   };
+
+  const goToUserPage = (id: number) => {
+    navigate(`/user/${id}`);
+  };
+
   return (
     <section className="main_page">
       <header className="main_header">
@@ -45,21 +46,32 @@ function Posts() {
       <nav className="main_nav">
         <button onClick={logout}>Logout</button>
       </nav>
+
+      <button onClick={() => setShowModal(true)} className="add_post">
+        Add Post
+      </button>
+
+      {showModal && (
+        <CreatePostModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          updatePosts={getPosts}
+        />
+      )}
+
       <main className="main_section">
         <ul>
           {posts.map((post: any) => (
             <li key={post.post_id}>
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>
-                <strong>Author:</strong> {post.user_full_name}
-              </p>
-              <p>
-                <strong>Created at:</strong> {post.created_at}
-              </p>
-              <p>
-                <strong>Updated at:</strong> {post.updated_at}
-              </p>
+              <PostItem
+                content={post.content}
+                title={post.title}
+                created_at={post.created_at}
+                author={post.user_full_name}
+                isAuthor={undefined}
+                deletePost={undefined}
+                goToUserPage={() => goToUserPage(post.user_id)}
+              />
             </li>
           ))}
         </ul>
