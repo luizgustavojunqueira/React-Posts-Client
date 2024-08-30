@@ -18,6 +18,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  {
+    path: "/user/:id",
+    element: <UserPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(

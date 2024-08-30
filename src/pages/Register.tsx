@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookie from "js-cookie";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -11,12 +12,16 @@ function Register() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (Cookie.get("token")) navigate("/posts", { replace: true });
+  }, []);
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       axios
-        .post("http://localhost:3000/api/v1/auth/register", {
+        .post("/api/v1/auth/register", {
           email,
           password,
           confirm_password,
@@ -42,6 +47,9 @@ function Register() {
       </header>
       <main>
         <p>Fill the form to register</p>
+        <p>
+          Or login <a href="/">here</a>
+        </p>
         <form onSubmit={handleRegister}>
           <label htmlFor="first_name">First Name</label>
           <input

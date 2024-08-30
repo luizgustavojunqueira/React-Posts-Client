@@ -13,7 +13,7 @@ function Login() {
 
     try {
       axios
-        .post("http://localhost:3000/api/v1/auth/login", {
+        .post("/api/v1/auth/login", {
           email,
           password,
         })
@@ -35,6 +35,9 @@ function Login() {
 
       <main>
         <p>Fill the form to login</p>
+        <p>
+          Or register <a href="/register">here</a>
+        </p>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email</label>
           <input

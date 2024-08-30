@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
-
-axios.defaults.headers.post["Content-Type"] = "application/json";
-axios.defaults.withCredentials = true;
-
 interface IPost {
   post_id: number;
   title: string;
@@ -14,29 +10,41 @@ interface IPost {
   user_id: number;
   user_full_name: string;
 }
+import { useNavigate } from "react-router-dom";
 
 function Posts() {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!Cookie.get("token")) return;
+  const getPosts = async () => {
+    if (!Cookie.get("token")) navigate("/", { replace: true });
 
     axios
-      .get("http://localhost:3000/api/v1/posts/all", {
+      .get("api/v1/posts/all", {
         headers: { Authorization: `Bearer ${Cookie.get("token")}` },
-        withCredentials: true,
       })
       .then((response) => {
         setPosts(response.data.posts);
       });
+  };
+
+  useEffect(() => {
+    getPosts();
   }, []);
 
+  const logout = () => {
+    Cookie.remove("token");
+    navigate("/", { replace: true });
+  };
   return (
     <section className="main_page">
       <header className="main_header">
         <h1>Posts Client</h1>
       </header>
 
+      <nav className="main_nav">
+        <button onClick={logout}>Logout</button>
+      </nav>
       <main className="main_section">
         <ul>
           {posts.map((post: any) => (
