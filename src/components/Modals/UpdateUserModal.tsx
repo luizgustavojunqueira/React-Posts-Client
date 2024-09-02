@@ -1,6 +1,8 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 
+import "./modal.css";
+
 type UpdateUserModalProps = {
   first_name: string;
   setFirstName: (first_name: string) => void;
@@ -36,7 +38,7 @@ function UpdateUserModal(props: UpdateUserModalProps) {
   return (
     <section className={`modal ${props.showModal ? "show" : ""}`}>
       <section className="modal_content">
-        <header>
+        <header className="modal_header">
           <h2>Update User</h2>
           <button
             className="modal_close"
@@ -45,7 +47,7 @@ function UpdateUserModal(props: UpdateUserModalProps) {
             Close
           </button>
         </header>
-        <main>
+        <main className="modal_main">
           <form onSubmit={updateUser} className="modal_form">
             <label htmlFor="first_name">First Name</label>
             <input

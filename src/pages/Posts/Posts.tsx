@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import CreatePostModal from "../../components/CreatePostModal";
-import PostItem from "../../components/PostItem";
+import CreatePostModal from "../../components/Modals/CreatePostModal";
+import PostItem from "../../components/Items/PostItem";
 import { Post } from "../../shared/types";
+
+import "./posts.css";
 
 function Posts() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -41,15 +43,14 @@ function Posts() {
     <section className="posts_page">
       <header className="posts_header">
         <h1>Posts Client</h1>
+
+        <button onClick={() => setShowModal(true)} className="add_post_button">
+          Add Post
+        </button>
+        <button className="logout_button" onClick={logout}>
+          Logout
+        </button>
       </header>
-
-      <nav className="posts_nav">
-        <button onClick={logout}>Logout</button>
-      </nav>
-
-      <button onClick={() => setShowModal(true)} className="add_post_button">
-        Add Post
-      </button>
 
       {showModal && (
         <CreatePostModal
@@ -59,22 +60,18 @@ function Posts() {
         />
       )}
 
-      <main className="posts_main">
-        <ul>
-          {posts.map((post: any) => (
-            <li key={post.post_id}>
-              <PostItem
-                content={post.content}
-                title={post.title}
-                created_at={post.created_at}
-                author={post.user_full_name}
-                isAuthor={undefined}
-                deletePost={undefined}
-                goToUserPage={() => goToUserPage(post.user_id)}
-              />
-            </li>
-          ))}
-        </ul>
+      <main className="posts_list">
+        {posts.map((post: any) => (
+          <PostItem
+            content={post.content}
+            title={post.title}
+            created_at={post.created_at}
+            author={post.user_full_name}
+            isAuthor={undefined}
+            deletePost={undefined}
+            goToUserPage={() => goToUserPage(post.user_id)}
+          />
+        ))}
       </main>
     </section>
   );

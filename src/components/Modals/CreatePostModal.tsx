@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
 
+import "./modal.css";
+
 type PostModalProps = {
   showModal: boolean;
   setShowModal: (showModal: boolean) => void;
@@ -41,7 +43,7 @@ function CreatePostModal(props: PostModalProps) {
   return (
     <section className={`modal ${props.showModal ? "show" : ""}`}>
       <div className="modal_content">
-        <header>
+        <header className="modal_header">
           <h2>Add Post</h2>
           <button
             className="modal_close"
@@ -51,28 +53,30 @@ function CreatePostModal(props: PostModalProps) {
           </button>
         </header>
 
-        <form onSubmit={createPost} className="modal_form">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+        <main className="modal_main">
+          <form onSubmit={createPost} className="modal_form">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
 
-          <label htmlFor="content">Content</label>
-          <textarea
-            id="content"
-            name="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          ></textarea>
+            <label htmlFor="content">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            ></textarea>
 
-          <button className="modal_button" type="submit">
-            Add Post
-          </button>
-        </form>
+            <button className="modal_button" type="submit">
+              Add Post
+            </button>
+          </form>
+        </main>
       </div>
     </section>
   );

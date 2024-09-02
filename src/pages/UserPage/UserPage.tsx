@@ -3,10 +3,10 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import { Post } from "../../shared/types";
-import CreatePostModal from "../../components/CreatePostModal";
-import UpdateUserModal from "../../components/UpdateUserModal";
+import CreatePostModal from "../../components/Modals/CreatePostModal";
+import UpdateUserModal from "../../components/Modals/UpdateUserModal";
 
-import PostItem from "../../components/PostItem";
+import PostItem from "../../components/Items/PostItem";
 
 type User = {
   first_name: string;

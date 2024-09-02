@@ -1,5 +1,7 @@
 import { MouseEventHandler } from "react";
 
+import "./postitem.css";
+
 type PostItemProps = {
   author: string;
   title: string;
@@ -14,11 +16,11 @@ function PostItem(props: PostItemProps) {
   return (
     <article className="post_item">
       <header className="post_item_header">
-        <h2>{props.title}</h2>
-        <p onClick={props.goToUserPage}>{props.author}</p>
-        <p>{props.created_at}</p>
+        <h2>{`${props.title} - ${props.created_at.substring(0, 10)}`}</h2>
+        <p onClick={props.goToUserPage}>{`by ${props.author}`}</p>
         {props.isAuthor && <button onClick={props.deletePost}>Delete</button>}
       </header>
+      <hr />
       <main className="post_item_main">
         <p>{props.content}</p>
       </main>

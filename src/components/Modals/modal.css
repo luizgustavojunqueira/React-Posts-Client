@@ -1,0 +1,96 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.modal_content .modal_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  background-color: #333;
+  color: #fff;
+}
+
+.modal_content .modal_header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.modal_content .modal_header button {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #0077cc;
+  color: #fff;
+  font-weight: 600;
+}
+
+.modal_content .modal_header button:hover {
+  background-color: #005faa;
+}
+
+.modal_content .modal_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  background-color: #333;
+  color: #fff;
+  width: fit-content;
+}
+
+.modal_content .modal_main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+}
+
+.modal_content .modal_main form label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem;
+  align-self: flex-start;
+}
+
+.modal_content .modal_main form input,
+.modal_content .modal_main form textarea {
+  min-width: 500px;
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  min-height: 40px;
+  border-radius: 0.25rem;
+}
+
+.modal_button {
+  width: 100%;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #0077cc;
+  color: #fff;
+  font-weight: 600;
+}

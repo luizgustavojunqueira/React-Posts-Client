@@ -22,5 +22,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
   height: 100vh;
+  width: 100%;
 }

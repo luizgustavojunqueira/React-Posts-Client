@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookie from "js-cookie";
 
+import "./register.css";
+
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,12 +48,11 @@ function Register() {
         <h1>Register</h1>
       </header>
       <main className="register_main">
-        <p>Fill the form to register</p>
         <p>
-          Or login <a href="/">here</a>
+          Fill the form to register. Or login <a href="/">here</a>
         </p>
         <form onSubmit={handleRegister}>
-          <label htmlFor="first_name">First Name</label>
+          <label htmlFor="first_name">First Name:</label>
           <input
             type="text"
             id="first_name"
@@ -60,7 +61,7 @@ function Register() {
             onChange={(e) => setFirstName(e.target.value)}
           />
 
-          <label htmlFor="last_name">Last Name</label>
+          <label htmlFor="last_name">Last Name:</label>
           <input
             type="text"
             id="last_name"
@@ -69,7 +70,7 @@ function Register() {
             onChange={(e) => setLastName(e.target.value)}
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -78,7 +79,7 @@ function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
@@ -87,7 +88,7 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <label htmlFor="confirm_password">Confirm Password</label>
+          <label htmlFor="confirm_password">Confirm Password:</label>
           <input
             type="password"
             id="confirm_password"
