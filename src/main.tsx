@@ -1,8 +1,8 @@
 import { createRoot } from "react-dom/client";
-import Posts from "./pages/Posts.tsx";
-import Login from "./pages/Login.tsx";
-import UserPage from "./pages/UserPage.tsx";
-import Register from "./pages/Register.tsx";
+import Posts from "./pages/Posts/Posts.tsx";
+import Login from "./pages/Login/Login.tsx";
+import UserPage from "./pages/UserPage/UserPage.tsx";
+import Register from "./pages/Register/Register.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 

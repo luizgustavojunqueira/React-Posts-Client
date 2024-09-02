@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import CreatePostModal from "../components/CreatePostModal";
-import PostItem from "../components/PostItem";
-import { Post } from "../shared/types";
+import CreatePostModal from "../../components/CreatePostModal";
+import PostItem from "../../components/PostItem";
+import { Post } from "../../shared/types";
 
 function Posts() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -38,16 +38,16 @@ function Posts() {
   };
 
   return (
-    <section className="main_page">
-      <header className="main_header">
+    <section className="posts_page">
+      <header className="posts_header">
         <h1>Posts Client</h1>
       </header>
 
-      <nav className="main_nav">
+      <nav className="posts_nav">
         <button onClick={logout}>Logout</button>
       </nav>
 
-      <button onClick={() => setShowModal(true)} className="add_post">
+      <button onClick={() => setShowModal(true)} className="add_post_button">
         Add Post
       </button>
 
@@ -59,7 +59,7 @@ function Posts() {
         />
       )}
 
-      <main className="main_section">
+      <main className="posts_main">
         <ul>
           {posts.map((post: any) => (
             <li key={post.post_id}>

@@ -28,18 +28,17 @@ function Login() {
   };
 
   return (
-    <section>
-      <header>
+    <section className="login_page">
+      <header className="login_header">
         <h1>Login</h1>
       </header>
 
-      <main>
-        <p>Fill the form to login</p>
+      <main className="login_main">
         <p>
-          Or register <a href="/register">here</a>
+          Fill the form to login. Or register <a href="/register">here</a>
         </p>
         <form onSubmit={handleLogin}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -48,7 +47,7 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             id="password"
@@ -57,7 +56,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Login</button>
+          <button className="login_button" type="submit">
+            Login
+          </button>
         </form>
       </main>
     </section>

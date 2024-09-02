@@ -40,14 +40,18 @@ function CreatePostModal(props: PostModalProps) {
 
   return (
     <section className={`modal ${props.showModal ? "show" : ""}`}>
-      <div className="modal-content">
-        <button className="close" onClick={() => props.setShowModal(false)}>
-          X
-        </button>
+      <div className="modal_content">
+        <header>
+          <h2>Add Post</h2>
+          <button
+            className="modal_close"
+            onClick={() => props.setShowModal(false)}
+          >
+            X
+          </button>
+        </header>
 
-        <h2>Add Post</h2>
-
-        <form onSubmit={createPost}>
+        <form onSubmit={createPost} className="modal_form">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -65,7 +69,9 @@ function CreatePostModal(props: PostModalProps) {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
 
-          <button type="submit">Add Post</button>
+          <button className="modal_button" type="submit">
+            Add Post
+          </button>
         </form>
       </div>
     </section>

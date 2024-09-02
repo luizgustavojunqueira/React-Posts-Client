@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { useNavigate, useParams } from "react-router-dom";
-import { Post } from "../shared/types";
-import CreatePostModal from "../components/CreatePostModal";
-import UpdateUserModal from "../components/UpdateUserModal";
+import { Post } from "../../shared/types";
+import CreatePostModal from "../../components/CreatePostModal";
+import UpdateUserModal from "../../components/UpdateUserModal";
 
-import PostItem from "../components/PostItem";
+import PostItem from "../../components/PostItem";
 
 type User = {
   first_name: string;
@@ -84,13 +84,13 @@ function UserPage() {
   };
 
   return (
-    <section>
-      <header>
+    <section className="user_page">
+      <header className="user_header">
         <h1>User Page</h1>
         <a onClick={() => navigate("/posts", { replace: true })}>Posts</a>
       </header>
 
-      <main>
+      <main className="user_main">
         <p>
           {user.first_name} {user.last_name}
         </p>
@@ -104,7 +104,7 @@ function UserPage() {
         )}
         <button onClick={() => setShowPostModal(true)}>Add Post</button>
 
-        {showPostModal && (
+        {loggedInUser.email === user.email && showPostModal && (
           <CreatePostModal
             showModal={showPostModal}
             setShowModal={setShowPostModal}
@@ -112,7 +112,7 @@ function UserPage() {
           />
         )}
 
-        {showUpdateUserModal && (
+        {loggedInUser.email === user.email && showUpdateUserModal && (
           <UpdateUserModal
             first_name={user.first_name}
             setFirstName={setFirstName}

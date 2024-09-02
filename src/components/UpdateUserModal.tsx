@@ -34,14 +34,19 @@ function UpdateUserModal(props: UpdateUserModalProps) {
   };
 
   return (
-    <section className="modal">
+    <section className={`modal ${props.showModal ? "show" : ""}`}>
       <section className="modal_content">
         <header>
           <h2>Update User</h2>
-          <button onClick={() => props.setShowModal(false)}>Close</button>
+          <button
+            className="modal_close"
+            onClick={() => props.setShowModal(false)}
+          >
+            Close
+          </button>
         </header>
         <main>
-          <form onSubmit={updateUser}>
+          <form onSubmit={updateUser} className="modal_form">
             <label htmlFor="first_name">First Name</label>
             <input
               type="text"
@@ -56,7 +61,9 @@ function UpdateUserModal(props: UpdateUserModalProps) {
               value={props.last_name}
               onChange={(e) => props.setLastName(e.target.value)}
             />
-            <button type="submit">Update</button>
+            <button className="modal_button" type="submit">
+              Update
+            </button>
           </form>
         </main>
       </section>

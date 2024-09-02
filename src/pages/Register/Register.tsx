@@ -41,11 +41,11 @@ function Register() {
   };
 
   return (
-    <>
-      <header>
+    <section className="register_page">
+      <header className="register_header">
         <h1>Register</h1>
       </header>
-      <main>
+      <main className="register_main">
         <p>Fill the form to register</p>
         <p>
           Or login <a href="/">here</a>
@@ -96,10 +96,12 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <button type="submit">Register</button>
+          <button className="register_button" type="submit">
+            Register
+          </button>
         </form>
       </main>
-    </>
+    </section>
   );
 }
 
